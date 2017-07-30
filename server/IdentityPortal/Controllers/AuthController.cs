@@ -97,15 +97,17 @@ namespace IdentityPortal.Controllers
         }
 
         [HttpPost]
-        public bool ValidateToken([FromBody]string token)
+        public HttpResponseMessage ValidateToken([FromBody]string token)
         {
             try
             {
-                return _authService.ValidateToken(token);
+                var user = _authService.ValidateToken(token);
+                if(user == null) return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Token validation failed");
+                return Request.CreateResponse(HttpStatusCode.OK, new LoginResponse() { IsLoggedIn = true, CurrenUserName = user?.Name, AuthToken = token });
             }
             catch (Exception ex)
             {
-                throw new Exception("Unable to create new member: " + ex.Message);
+                return null;
             }
         }
     }

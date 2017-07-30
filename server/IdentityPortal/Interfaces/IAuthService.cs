@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using IdentityPortal.Context;
+using System.Threading.Tasks;
 
 namespace IdentityPortal.Interfaces
 {
@@ -6,6 +7,6 @@ namespace IdentityPortal.Interfaces
     {
         Task<string> RefreshAuthToken(string username);
 
-        bool ValidateToken(string token);
+        User ValidateToken(string token);
     }
 }

@@ -10,22 +10,23 @@ namespace IdentityPortal.Services
 {
     public class AuthService : IAuthService
     {
-        public bool ValidateToken(string token)
+        public User ValidateToken(string token)
         {
             using (var context = new KartelContext())
             {
                 var authToken = context.AuthTokens.SingleOrDefault(x => x.Token == token);
                 if (authToken == null)
                 {
-                    return false;
+                    return null;
                 }
                 var tokenValidHours = Convert.ToInt32(ConfigurationManager.AppSettings["TokenValidHours"]);
                 var tokenDateTime = TokenUtils.FetchDateTimeFromToken(token);
                 if (tokenDateTime.AddHours(tokenValidHours) <= DateTime.Now)
                 {
-                    return false;
+                    return null;
                 }
-                return true;
+                var userId = TokenUtils.FetchUserIdFromToken(token);
+                return context.Users.Find(userId);
             }
         }
 

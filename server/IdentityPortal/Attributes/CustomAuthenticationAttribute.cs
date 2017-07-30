@@ -9,7 +9,7 @@ namespace UmbracoChallenge.Attributes
     {
         public Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(0);
 
             //var request = HttpContext.Current.Request;
             //using (var context = new KartelContext())

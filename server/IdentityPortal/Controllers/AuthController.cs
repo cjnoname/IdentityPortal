@@ -105,7 +105,7 @@ namespace IdentityPortal.Controllers
                 if(user == null) return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Token validation failed");
                 return Request.CreateResponse(HttpStatusCode.OK, new LoginResponse() { IsLoggedIn = true, CurrenUserName = user?.Name, AuthToken = token });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

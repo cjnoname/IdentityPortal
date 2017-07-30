@@ -1,8 +1,10 @@
 import { fork } from "redux-saga/effects";
-import authWatcher from "./watcher";
+import { watchAuth, watchDeAuth, autoAuth } from "./authWatcher";
 
 export default function* rootSaga() {
     yield [
-        authWatcher()
+        watchAuth(),
+        watchDeAuth(),
+        autoAuth()
     ]
 }

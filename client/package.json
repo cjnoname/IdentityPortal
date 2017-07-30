@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server -d --env.development --content-base dist/",
+    "start": "webpack-dev-server -d --env.development --history-api-fallback",
     "build": "webpack -p --env.production --colors --progress"
   },
   "keywords": [],
@@ -21,6 +21,7 @@
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.1",
+    "redux-form": "^7.0.3",
     "redux-saga": "^0.15.6"
   },
   "devDependencies": {

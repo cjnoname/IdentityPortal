@@ -8,16 +8,21 @@ using Umbraco.Web.WebApi;
 using IdentityPortal.Models;
 using LoginModel = IdentityPortal.Models.LoginModel;
 using IdentityPortal.Interfaces;
-using IdentityPortal.Services;
 using IdentityPortal.Context;
+using UmbracoChallenge.Models;
 
 namespace IdentityPortal.Controllers
 {
     public class AuthController : UmbracoApiController
     {
-        // should use DI (autofac) but umbraco does not support well, hack in for now...
-        private readonly IUserService _userService = new UserService();
-        private readonly IAuthService _authService = new AuthService();
+        private readonly IUserService _userService;
+        private readonly IAuthService _authService;
+
+        public AuthController(IUserService userService, IAuthService authService)
+        {
+            _userService = userService;
+            _authService = authService;
+        }
 
         [HttpPost]
         public async Task<HttpResponseMessage> Login([FromBody]LoginModel model)
@@ -97,13 +102,13 @@ namespace IdentityPortal.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage ValidateToken([FromBody]string token)
+        public HttpResponseMessage ValidateToken([FromBody]ValidateTokenRequest request)
         {
             try
             {
-                var user = _authService.ValidateToken(token);
-                if(user == null) return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Token validation failed");
-                return Request.CreateResponse(HttpStatusCode.OK, new LoginResponse() { IsLoggedIn = true, CurrenUserName = user?.Name, AuthToken = token });
+                var user = _authService.ValidateToken(request.Token);
+                if (user == null) return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Token validation failed");
+                return Request.CreateResponse(HttpStatusCode.OK, new LoginResponse() { IsLoggedIn = true, CurrenUserName = user?.Name, AuthToken = request.Token });
             }
             catch (Exception)
             {

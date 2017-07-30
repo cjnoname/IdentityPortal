@@ -8,16 +8,19 @@ using IdentityPortal.Services;
 using IdentityPortal.Utils;
 using IdentityPortal.Context;
 using System;
-using UmbracoChallenge.Attributes;
 
 namespace IdentityPortal.Controllers
 {
     public class DocumentController : UmbracoApiController
     {
-        private readonly IDocumentService _documentService = new DocumentService();
+        private readonly IDocumentService _documentService;
+
+        public DocumentController(IDocumentService documentService)
+        {
+            _documentService = documentService;
+        }
 
         [HttpPost]
-        [CustomAuthentication]
         public HttpResponseMessage SaveFile()
         {
             if (TokenUtils.TokenIsExpired())

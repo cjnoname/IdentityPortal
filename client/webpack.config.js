@@ -68,5 +68,15 @@ module.exports = {
         optimizeCssPlugin,
         uglifyPlugin,
         openBrowserPlungin
-    ]
+    ],
+    devtool: 'source-map',
+    // devServer: {
+    //   contentBase: helpers.root('client'),
+    //   proxy: {
+    //     '/api/*': 'http://localhost:64338/Umbraco/Api',
+    //     // '/images/*': 'http://localhost:5000',
+    //     '/realtime/*': 'http://localhost:64338/Umbraco/Api',
+    //     '/proxy/*': 'http://localhost:64338/Umbraco/Api'
+    //   }
+    // }
 }

@@ -13,6 +13,7 @@ namespace IdentityPortal
             base.OnApplicationStarting(sender, e);
             GlobalConfiguration.Configure(WebApiConfig.Register);
             GlobalConfiguration.Configuration.Filters.Add(new CustomAuthenticationAttribute());
+            UnityConfig.RegisterComponents();
         }
     }
 }

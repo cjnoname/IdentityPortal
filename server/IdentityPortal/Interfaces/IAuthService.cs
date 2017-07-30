@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace IdentityPortal.Interfaces
 {
-    interface IAuthService
+    public interface IAuthService
     {
         Task<string> RefreshAuthToken(string username);
 

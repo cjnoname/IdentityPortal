@@ -87,8 +87,6 @@ namespace IdentityPortal
 
             // Enabling the authentication based on Umbraco back office cookie
             app.UseUmbracoCookieAuthenticationForRestApi(ApplicationContext.Current);
-
-            AutofacConfig.ConfigureContainer();
         }
     }
 }

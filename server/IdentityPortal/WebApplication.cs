@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Umbraco.Web;
 using IdentityPortal.App_Start;
+using UmbracoChallenge.Attributes;
 
 namespace IdentityPortal
 {
@@ -11,6 +12,7 @@ namespace IdentityPortal
         {
             base.OnApplicationStarting(sender, e);
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configuration.Filters.Add(new CustomAuthenticationAttribute());
         }
     }
 }

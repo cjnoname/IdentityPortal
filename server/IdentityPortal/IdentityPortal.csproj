@@ -378,6 +378,7 @@
     <Compile Include="App_Start\UmbracoCustomOwinStartup.cs" />
     <Compile Include="App_Start\UmbracoStandardOwinStartup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\CustomAuthenticationAttribute.cs" />
     <Compile Include="Context\AuthToken.cs">
       <DependentUpon>KartelModel.tt</DependentUpon>
     </Compile>
@@ -426,7 +427,6 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Attributes\" />
     <Folder Include="UploadedFiles\" />
   </ItemGroup>
   <ItemGroup>

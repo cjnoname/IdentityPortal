@@ -4,7 +4,7 @@ using System.Web.Routing;
 using Umbraco.Core;
 using Umbraco.Web;
 
-namespace UmbracoChallenge
+namespace IdentityPortal
 {
     public class CustomUmbracoApplication : UmbracoApplication
     {

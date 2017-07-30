@@ -2,11 +2,11 @@
 using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
-using UmbracoChallenge.Context;
-using UmbracoChallenge.Interfaces;
-using UmbracoChallenge.Utils;
+using IdentityPortal.Context;
+using IdentityPortal.Interfaces;
+using IdentityPortal.Utils;
 
-namespace UmbracoChallenge.Services
+namespace IdentityPortal.Services
 {
     public class AuthService : IAuthService
     {

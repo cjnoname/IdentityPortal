@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using UmbracoChallenge.Context;
-using UmbracoChallenge.Interfaces;
+using IdentityPortal.Context;
+using IdentityPortal.Interfaces;
 
-namespace UmbracoChallenge.Services
+namespace IdentityPortal.Services
 {
     public class UserService : IUserService
     {

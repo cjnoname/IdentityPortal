@@ -4,14 +4,14 @@ using Umbraco.Core;
 using Umbraco.Core.Security;
 using Umbraco.Web.Security.Identity;
 using Umbraco.IdentityExtensions;
-using UmbracoChallenge;
+using IdentityPortal;
 
 //To use this startup class, change the appSetting value in the web.config called 
 // "owin:appStartup" to be "UmbracoCustomOwinStartup"
 
 [assembly: OwinStartup("UmbracoCustomOwinStartup", typeof(UmbracoCustomOwinStartup))]
 
-namespace UmbracoChallenge
+namespace IdentityPortal
 {
     /// <summary>
     /// A custom way to configure OWIN for Umbraco

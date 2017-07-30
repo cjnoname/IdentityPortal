@@ -1,6 +1,6 @@
-﻿using UmbracoChallenge.Interfaces;
+﻿using IdentityPortal.Interfaces;
 
-namespace UmbracoChallenge.Services
+namespace IdentityPortal.Services
 {
     public class DocumentService : IDocumentService
     {

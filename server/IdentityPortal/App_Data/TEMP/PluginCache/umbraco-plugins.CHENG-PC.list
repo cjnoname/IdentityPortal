@@ -141,9 +141,9 @@ Umbraco.Core.PropertyEditors.ValueConverters.DatePickerValueConverter, Umbraco.C
 Umbraco.Core.PropertyEditors.ValueConverters.YesNoValueConverter, Umbraco.Core, Version=1.0.6396.36621, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Strategies.RelateOnCopyHandler, Umbraco.Core, Version=1.0.6396.36621, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Strategies.RelateOnTrashHandler, Umbraco.Core, Version=1.0.6396.36621, Culture=neutral, PublicKeyToken=null
-UmbracoChallenge.Controllers.AuthController, UmbracoChallenge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-UmbracoChallenge.Controllers.DocumentController, UmbracoChallenge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 umbraco.providers.members.MembershipEventHandler, umbraco.providers, Version=1.0.6396.36630, Culture=neutral, PublicKeyToken=null
+IdentityPortal.Controllers.AuthController, UmbracoChallenge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+IdentityPortal.Controllers.DocumentController, UmbracoChallenge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Validation.ContentTypeModelValidator, Umbraco.ModelsBuilder, Version=3.0.7.99, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Validation.MediaTypeModelValidator, Umbraco.ModelsBuilder, Version=3.0.7.99, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Validation.MemberTypeModelValidator, Umbraco.ModelsBuilder, Version=3.0.7.99, Culture=neutral, PublicKeyToken=null
@@ -577,8 +577,8 @@ Umbraco.Web.Controllers.UmbLoginController, umbraco, Version=1.0.6396.36631, Cul
 
 Umbraco.Web.WebApi.UmbracoApiController
 
-UmbracoChallenge.Controllers.AuthController, UmbracoChallenge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-UmbracoChallenge.Controllers.DocumentController, UmbracoChallenge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+IdentityPortal.Controllers.AuthController, UmbracoChallenge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+IdentityPortal.Controllers.DocumentController, UmbracoChallenge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Umbraco.ModelsBuilderBackOfficeController, Umbraco.ModelsBuilder, Version=3.0.7.99, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Editors.GravatarController, umbraco, Version=1.0.6396.36631, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Editors.TemplateController, umbraco, Version=1.0.6396.36631, Culture=neutral, PublicKeyToken=null

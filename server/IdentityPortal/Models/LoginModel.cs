@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace UmbracoChallenge.Models
+namespace IdentityPortal.Models
 {
     public class LoginModel
     {

@@ -5,9 +5,9 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Umbraco.IdentityExtensions;
 using Umbraco.Web.Security.Identity;
-using UmbracoChallenge;
+using IdentityPortal;
 
-namespace UmbracoChallenge
+namespace IdentityPortal
 {
 
     /// <summary>

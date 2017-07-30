@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Configuration;
 using System.Linq;
-using UmbracoChallenge.Context;
+using IdentityPortal.Context;
 
-namespace UmbracoChallenge.Utils
+namespace IdentityPortal.Utils
 {
     public static class TokenUtils
     {

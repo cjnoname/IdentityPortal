@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UmbracoChallenge.Context
+namespace IdentityPortal.Context
 {
     using System;
     using System.Data.Entity;

@@ -377,6 +377,7 @@
     <Compile Include="App_Start\UmbracoAuthTokenServerExtensions.cs" />
     <Compile Include="App_Start\UmbracoCustomOwinStartup.cs" />
     <Compile Include="App_Start\UmbracoStandardOwinStartup.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Attributes\EnsureAccessToken.cs" />
     <Compile Include="Context\AuthToken.cs">
       <DependentUpon>KartelModel.tt</DependentUpon>
@@ -419,6 +420,7 @@
     <Compile Include="Services\DocumentService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Utils\TokenUtils.cs" />
+    <Compile Include="WebApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />

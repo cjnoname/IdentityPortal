@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Newtonsoft.Json;
 using Umbraco.Web.WebApi;
-using UmbracoChallenge.Models;
-using LoginModel = UmbracoChallenge.Models.LoginModel;
-using UmbracoChallenge.Interfaces;
-using UmbracoChallenge.Services;
-using UmbracoChallenge.Context;
+using IdentityPortal.Models;
+using LoginModel = IdentityPortal.Models.LoginModel;
+using IdentityPortal.Interfaces;
+using IdentityPortal.Services;
+using IdentityPortal.Context;
 
-namespace UmbracoChallenge.Controllers
+namespace IdentityPortal.Controllers
 {
     public class AuthController : UmbracoApiController
     {

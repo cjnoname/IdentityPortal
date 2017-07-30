@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace UmbracoChallenge.Interfaces
+namespace IdentityPortal.Interfaces
 {
     interface IAuthService
     {

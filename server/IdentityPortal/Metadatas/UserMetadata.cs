@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace UmbracoChallenge.Metadatas
+namespace IdentityPortal.Metadatas
 {
     // for validate user table
     public class UserMetadata

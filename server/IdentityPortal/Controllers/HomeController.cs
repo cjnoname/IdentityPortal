@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace UmbracoChallenge.Controllers
+namespace IdentityPortal.Controllers
 {
     public class HomeController : Controller
     {

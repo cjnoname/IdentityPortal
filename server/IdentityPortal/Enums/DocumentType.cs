@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel;
 
-namespace UmbracoChallenge.Enums
+namespace IdentityPortal.Enums
 {
     public enum DocumentType
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace UmbracoChallenge.Interfaces
+namespace IdentityPortal.Interfaces
 {
     public interface IDocumentService
     {

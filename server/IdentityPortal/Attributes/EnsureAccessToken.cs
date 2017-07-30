@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Web;
-using UmbracoChallenge.Context;
-using UmbracoChallenge.Utils;
+using IdentityPortal.Context;
+using IdentityPortal.Utils;
 
 namespace InfoTrack.Planly.Web.Attributes
 {

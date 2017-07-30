@@ -1,4 +1,4 @@
-﻿namespace UmbracoChallenge.Models
+﻿namespace IdentityPortal.Models
 {
     public class LoginResponse
     {

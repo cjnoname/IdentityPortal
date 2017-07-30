@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
-using UmbracoChallenge.Metadatas;
+using IdentityPortal.Metadatas;
 
-namespace UmbracoChallenge.Context
+namespace IdentityPortal.Context
 {
     [MetadataType(typeof(UserMetadata))]
     public partial class User

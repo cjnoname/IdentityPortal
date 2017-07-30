@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Umbraco.Core.Services;
 
-namespace UmbracoChallenge.App_Start
+namespace IdentityPortal.App_Start
 {
     public class AutofacConfig
     {

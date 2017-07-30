@@ -4,10 +4,10 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Umbraco.Web.WebApi;
-using UmbracoChallenge.Interfaces;
-using UmbracoChallenge.Services;
+using IdentityPortal.Interfaces;
+using IdentityPortal.Services;
 
-namespace UmbracoChallenge.Controllers
+namespace IdentityPortal.Controllers
 {
     public class DocumentController : UmbracoApiController
     {

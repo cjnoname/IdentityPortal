@@ -7,6 +7,8 @@ using IdentityPortal.Interfaces;
 using IdentityPortal.Services;
 using IdentityPortal.Utils;
 using IdentityPortal.Context;
+using IdentityPortal.Enums;
+using System;
 
 namespace IdentityPortal.Controllers
 {
@@ -15,7 +17,7 @@ namespace IdentityPortal.Controllers
         private readonly IDocumentService _documentService = new DocumentService();
 
         [HttpPost]
-        public HttpResponseMessage SaveFile(Document document)
+        public HttpResponseMessage SaveFile()
         {
             if (TokenUtils.TokenIsExpired())
             {
@@ -28,25 +30,37 @@ namespace IdentityPortal.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
-            foreach (string fileName in httpRequest.Files.Keys)
+            var documentType = Convert.ToInt32(httpRequest.Params["documentType"]);
+
+            try
             {
-                var file = httpRequest.Files[fileName];
-
-                if (file != null && (file.ContentType.ToLowerInvariant().Contains("pdf") ||
-                                     file.ContentType.ToLowerInvariant().Contains("jpeg") ||
-                                     file.ContentType.ToLowerInvariant().Contains("png")))
+                var userId = TokenUtils.FetchUserIdFromRequest();
+                foreach (string fileName in httpRequest.Files.Keys)
                 {
-                    var filePath = HttpContext.Current.Server.MapPath("~/UploadedFiles/" + file.FileName);
-                    file.SaveAs(filePath);
+                    var file = httpRequest.Files[fileName];
+
+                    if (file != null && (file.ContentType.ToLowerInvariant().Contains("pdf") ||
+                                         file.ContentType.ToLowerInvariant().Contains("jpeg") ||
+                                         file.ContentType.ToLowerInvariant().Contains("png")))
+                    {
+                        var filePath = HttpContext.Current.Server.MapPath("~/UploadedFiles/" + file.FileName);
+                        file.SaveAs(filePath);
+                        _documentService.DocumentUpload(new Document
+                        {
+                            DocumentType = documentType,
+                            FileName = fileName,
+                            UserId = userId
+                        });
+                    }
+                    else
+                        return Request.CreateResponse(HttpStatusCode.NotAcceptable, "Unsupported file format");
                 }
-                else
-                    return Request.CreateResponse(HttpStatusCode.NotAcceptable, "Unsupported file format");
+                return Request.CreateResponse(HttpStatusCode.Created, "File Uploaded!");
             }
-
-            document.UserId = TokenUtils.FetchUserIdFromRequest();
-            _documentService.DocumentUpload(document);
-
-            return Request.CreateResponse(HttpStatusCode.Created, "File Uploaded!");
+            catch (Exception ex)
+            {
+                throw new Exception("Upload file failed: " + ex.Message);
+            }
         }
     }
 }

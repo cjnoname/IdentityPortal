@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Linq;
 using IdentityPortal.Context;
+using System.Web;
 
 namespace IdentityPortal.Utils
 {
@@ -37,7 +38,7 @@ namespace IdentityPortal.Utils
                     return false;
                 }
                 var tokenValidHours = Convert.ToInt32(ConfigurationManager.AppSettings["TokenValidHours"]);
-                var tokenDateTime = TokenUtils.FetchDateTimeFromToken(token);
+                var tokenDateTime = FetchDateTimeFromToken(token);
                 if (tokenDateTime.AddHours(tokenValidHours) <= DateTime.Now)
                 {
                     return false;
@@ -45,5 +46,29 @@ namespace IdentityPortal.Utils
                 return true;
             }
         }
+
+        public static bool TokenIsExpired()
+        {
+            var request = HttpContext.Current.Request;
+            using (var context = new KartelContext())
+            {
+                var token = request.Headers["AuthToken"];
+
+                if (token == null || !ValidateToken(token.ToString()))
+                {
+                    return true;
+                }
+
+                var userId = FetchUserIdFromToken(token);
+
+                var user = context.Users.FirstOrDefault(x => x.Id == userId);
+                if (user == null)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 }

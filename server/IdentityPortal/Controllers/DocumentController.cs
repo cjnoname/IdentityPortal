@@ -1,11 +1,11 @@
-﻿using InfoTrack.Planly.Web.Attributes;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Umbraco.Web.WebApi;
 using IdentityPortal.Interfaces;
 using IdentityPortal.Services;
+using IdentityPortal.Utils;
 
 namespace IdentityPortal.Controllers
 {
@@ -14,9 +14,12 @@ namespace IdentityPortal.Controllers
         private readonly IDocumentService _documentService = new DocumentService();
 
         [HttpPost]
-        [EnsureAccessToken]
         public HttpResponseMessage SaveFile()
         {
+            if (TokenUtils.TokenIsExpired())
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
             var httpRequest = HttpContext.Current.Request;
 
             if (httpRequest.Files.Count <= 0)
@@ -38,6 +41,8 @@ namespace IdentityPortal.Controllers
                 else
                     return Request.CreateResponse(HttpStatusCode.NotAcceptable, "Unsupported file format");
             }
+
+            //_documentService.DocumentUpload(userId);
 
             return Request.CreateResponse(HttpStatusCode.Created, "File Uploaded!");
         }

@@ -6,6 +6,7 @@ using Umbraco.Web.WebApi;
 using IdentityPortal.Interfaces;
 using IdentityPortal.Services;
 using IdentityPortal.Utils;
+using IdentityPortal.Context;
 
 namespace IdentityPortal.Controllers
 {
@@ -14,7 +15,7 @@ namespace IdentityPortal.Controllers
         private readonly IDocumentService _documentService = new DocumentService();
 
         [HttpPost]
-        public HttpResponseMessage SaveFile()
+        public HttpResponseMessage SaveFile(Document document)
         {
             if (TokenUtils.TokenIsExpired())
             {
@@ -42,7 +43,8 @@ namespace IdentityPortal.Controllers
                     return Request.CreateResponse(HttpStatusCode.NotAcceptable, "Unsupported file format");
             }
 
-            //_documentService.DocumentUpload(userId);
+            document.UserId = TokenUtils.FetchUserIdFromRequest();
+            _documentService.DocumentUpload(document);
 
             return Request.CreateResponse(HttpStatusCode.Created, "File Uploaded!");
         }

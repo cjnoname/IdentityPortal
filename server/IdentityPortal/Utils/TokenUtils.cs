@@ -53,14 +53,11 @@ namespace IdentityPortal.Utils
             using (var context = new KartelContext())
             {
                 var token = request.Headers["AuthToken"];
-
                 if (token == null || !ValidateToken(token.ToString()))
                 {
                     return true;
                 }
-
                 var userId = FetchUserIdFromToken(token);
-
                 var user = context.Users.FirstOrDefault(x => x.Id == userId);
                 if (user == null)
                 {
@@ -70,5 +67,11 @@ namespace IdentityPortal.Utils
             return false;
         }
 
+        public static int FetchUserIdFromRequest()
+        {
+            var request = HttpContext.Current.Request;
+            var token = request.Headers["AuthToken"];
+            return FetchUserIdFromToken(token);
+        }
     }
 }

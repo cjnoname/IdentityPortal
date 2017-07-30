@@ -1,10 +1,14 @@
 ﻿using IdentityPortal.Context;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace IdentityPortal.Interfaces
 {
     public interface IDocumentService
     {
-        Task DocumentUpload(Document document);
+        void DocumentUpload(Document document);
+
+        List<Document> GetAllDocuments();
+
+        void RemoveDocument(int id);
     }
 }

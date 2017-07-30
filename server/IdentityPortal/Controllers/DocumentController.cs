@@ -7,7 +7,6 @@ using IdentityPortal.Interfaces;
 using IdentityPortal.Services;
 using IdentityPortal.Utils;
 using IdentityPortal.Context;
-using IdentityPortal.Enums;
 using System;
 
 namespace IdentityPortal.Controllers

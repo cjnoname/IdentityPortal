@@ -1,17 +1,36 @@
 ﻿using IdentityPortal.Context;
 using IdentityPortal.Interfaces;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace IdentityPortal.Services
 {
     public class DocumentService : IDocumentService
     {
-        public async Task DocumentUpload(Document document)
+        public void DocumentUpload(Document document)
         {
-            using(var context = new KartelContext())
+            using (var context = new KartelContext())
             {
                 context.Documents.Add(document);
-                await context.SaveChangesAsync();
+                context.SaveChanges();
+            }
+        }
+
+        public List<Document> GetAllDocuments()
+        {
+            using (var context = new KartelContext())
+            {
+                return context.Documents.ToList();
+            }
+        }
+
+        public void RemoveDocument(int id)
+        {
+            using (var context = new KartelContext())
+            {
+                context.Documents.Remove(context.Documents.Find(id));
+                context.SaveChanges();
             }
         }
     }

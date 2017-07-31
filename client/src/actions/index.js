@@ -1,7 +1,14 @@
-import { LOGIN_REQUEST, LOGOUT, AUTO_LOGIN_REQUEST } from "../constants/actionTypes";
+import {
+    LOGIN_REQUEST, LOGOUT, AUTO_LOGIN_REQUEST,
+    ADD_FILE, UPLOAD_FILE_REQUEST, UPLOAD_FILE_FAILED
+} from "../constants/actionTypes";
 
 export const loginRequestAct = (username, password) => ({ type: LOGIN_REQUEST, payload: { username, password }});
 
 export const logoutAct = () => ({ type: LOGOUT });
 
 export const autoLoginAct = () => ({ type: AUTO_LOGIN_REQUEST });
+
+export const addFileAct = (fileCategory, file) => ({ type: ADD_FILE, payload: { fileCategory, file } });
+
+export const uploadFileAct = (fileObj) => ({ type: UPLOAD_FILE_REQUEST, payload: { fileObj } });

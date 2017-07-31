@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Welcome from "./components/Welcome";
+import FileUploader from "./components//FileUploader";
 
 function requireAuth (nextState, replace) {
   console.log("nextState: ", nextState)
@@ -29,6 +30,7 @@ export default (
         <IndexRoute component={Welcome} onEnter={requireAuth} />
         <Route path="/Login" component={Login} onEnter={requireNotAuth}/>
         <Route path="/Register" component={Register} onEnter={requireNotAuth}/>
-        <Route path="Welcome" component={Welcome} onEnter={requireAuth}/>
+        <Route path="/Welcome" component={Welcome} onEnter={requireAuth}/>
+        <Route path="/Upload" component={FileUploader} onEnter={requireAuth}/>
     </Route>
 );

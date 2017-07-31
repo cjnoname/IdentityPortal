@@ -21,12 +21,12 @@ namespace IdentityPortal.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage SaveFile()
+        public HttpResponseMessage Upload()
         {
-            if (TokenUtils.TokenIsExpired())
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+            //if (TokenUtils.TokenIsExpired())
+            //{
+            //    return Request.CreateResponse(HttpStatusCode.BadRequest);
+            //}
             var httpRequest = HttpContext.Current.Request;
 
             if (httpRequest.Files.Count <= 0)
@@ -45,6 +45,7 @@ namespace IdentityPortal.Controllers
 
                     if (file != null && (file.ContentType.ToLowerInvariant().Contains("pdf") ||
                                          file.ContentType.ToLowerInvariant().Contains("jpeg") ||
+                                         file.ContentType.ToLowerInvariant().Contains("jpg") ||
                                          file.ContentType.ToLowerInvariant().Contains("png")))
                     {
                         var filePath = HttpContext.Current.Server.MapPath("~/UploadedFiles/" + file.FileName);

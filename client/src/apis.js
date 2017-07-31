@@ -17,3 +17,18 @@ export const login = function (username, password) {
 export const autoLogin = function (token) {
     return axios.post("http://localhost:64338/Umbraco/Api/Auth/ValidateToken", { token });
 }
+
+export const upload = function (files) {
+    const formData = new FormData();
+    Object.keys(files).forEach(fileName => {
+        formData.append(fileName, files[fileName]);
+    });
+
+    // var config = {
+    //     onUploadProgress: function(progressEvent) {
+    //         var percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+    //     }
+    // };
+
+    return  axios.post('http://localhost:64338/Umbraco/Api/Document/Upload', formData);
+}

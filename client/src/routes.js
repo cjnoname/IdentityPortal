@@ -9,7 +9,6 @@ import Welcome from "./components/Welcome";
 import FileUploader from "./components//FileUploader";
 
 function requireAuth (nextState, replace) {
-  console.log("nextState: ", nextState)
   if (!hasAuthToken()) {
     replace({
       pathname: '/Login'
@@ -31,6 +30,5 @@ export default (
         <Route path="/Login" component={Login} onEnter={requireNotAuth}/>
         <Route path="/Register" component={Register} onEnter={requireNotAuth}/>
         <Route path="/Welcome" component={Welcome} onEnter={requireAuth}/>
-        <Route path="/Upload" component={FileUploader} onEnter={requireAuth}/>
     </Route>
 );

@@ -3,7 +3,6 @@ export function saveAuthToken (token) {
 }
 
 export function removeAuthToken () {
-    console.log("try to remove token");
     localStorage.removeItem("token");
 }
 

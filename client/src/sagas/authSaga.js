@@ -30,7 +30,6 @@ export function* deauthorize (logoutAction) {
 export function* autoAuthorize (autoLoginAction) {
     try {
         const token = getAuthToken();
-        console.log('in saga: ', token)
         if (!hasAuthToken()) {
             yield put({ type: types.LOGIN_REQUEST_FAILED, payload: { message: "user not found" }});
         } else {
@@ -44,7 +43,6 @@ export function* autoAuthorize (autoLoginAction) {
                 saveAuthToken(token);
                 yield put(push('/Welcome'));
             }
-            console.log(response);
         }
     } catch (e) {
         yield put({ type: types.LOGIN_REQUEST_FAILED, payload: { message: "unexpected error occured" }});

@@ -8,8 +8,6 @@ const Header = props => {
                 <IndexLink activeClassName="active" to="login" >Login</IndexLink>
                 {" | "}
                 <Link to="register" activeClassName="active">Register</Link>
-                {" | "}
-                <Link to="upload" activeClassName="active">Upload</Link>
             </nav>
         </div>
     )

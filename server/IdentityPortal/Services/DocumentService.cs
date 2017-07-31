@@ -17,11 +17,11 @@ namespace IdentityPortal.Services
             }
         }
 
-        public List<Document> GetAllDocuments()
+        public List<Document> GetAllDocuments(int userId)
         {
             using (var context = new KartelContext())
             {
-                return context.Documents.ToList();
+                return context.Documents.Where(x => x.UserId == userId).ToList();
             }
         }
 

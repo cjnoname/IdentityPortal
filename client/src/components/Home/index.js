@@ -9,13 +9,10 @@ class Home extends Component {
         this.props.autoLogin();
     }
     render() {
-        console.log("from home: ", this.props)
         return (
             <div className="container-fluid">
                 <Header />
-                { this.props.auth.token && <div>{this.props.auth.token}</div>}
                 { this.props.auth.message && <div>Error: {this.props.auth.message}</div>}
-                { this.props.auth.username && <div>Welcome { this.props.auth.username }</div>}
                 { this.props.children }
             </div>
         );

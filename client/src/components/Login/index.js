@@ -5,7 +5,6 @@ import { loginRequestAct } from "../../actions"
 
 class WrappedLoginForm extends Component {
     handleSubmit = (values) => {
-        console.log("values: ", values);
         this.props.login(values.username, values.password);
     }
 

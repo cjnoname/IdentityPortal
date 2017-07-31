@@ -13,6 +13,8 @@ namespace IdentityPortal
             base.OnApplicationStarting(sender, e);
             GlobalConfiguration.Configure(WebApiConfig.Register);
             GlobalConfiguration.Configuration.Filters.Add(new CustomAuthenticationAttribute());
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
             UnityConfig.RegisterComponents();
         }
     }

@@ -7,7 +7,7 @@ namespace IdentityPortal.Interfaces
     {
         void DocumentUpload(Document document);
 
-        List<Document> GetAllDocuments();
+        List<Document> GetAllDocuments(int userId);
 
         void RemoveDocument(int id);
     }

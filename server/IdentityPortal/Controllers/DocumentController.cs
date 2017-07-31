@@ -8,6 +8,7 @@ using IdentityPortal.Services;
 using IdentityPortal.Utils;
 using IdentityPortal.Context;
 using System;
+using UmbracoChallenge.Models;
 
 namespace IdentityPortal.Controllers
 {
@@ -34,14 +35,13 @@ namespace IdentityPortal.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
-            var documentType = Convert.ToInt32(httpRequest.Params["documentType"]);
-
             try
             {
                 var userId = TokenUtils.FetchUserIdFromRequest();
-                foreach (string fileName in httpRequest.Files.Keys)
+
+                foreach (string fileType in httpRequest.Files.Keys)
                 {
-                    var file = httpRequest.Files[fileName];
+                    var file = httpRequest.Files[fileType];
 
                     if (file != null && (file.ContentType.ToLowerInvariant().Contains("pdf") ||
                                          file.ContentType.ToLowerInvariant().Contains("jpeg") ||
@@ -52,8 +52,8 @@ namespace IdentityPortal.Controllers
                         file.SaveAs(filePath);
                         _documentService.DocumentUpload(new Document
                         {
-                            DocumentType = documentType,
-                            FileName = fileName,
+                            DocumentType = Convert.ToInt32(fileType),
+                            FileName = file.FileName,
                             UserId = userId
                         });
                     }
@@ -65,6 +65,36 @@ namespace IdentityPortal.Controllers
             catch (Exception ex)
             {
                 throw new Exception("Upload file failed: " + ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public IHttpActionResult Documents()
+        {
+            try
+            {
+                var userId = TokenUtils.FetchUserIdFromRequest();
+                var documents = _documentService.GetAllDocuments(userId);
+                return Ok(documents);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fetch document failed: " + ex.Message);
+            }
+        }
+
+        [HttpDelete]
+        public IHttpActionResult Documents(int id)
+        {
+            try
+            {
+                var userId = TokenUtils.FetchUserIdFromRequest();
+                _documentService.RemoveDocument(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Remove document failed: " + ex.Message);
             }
         }
     }

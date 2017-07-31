@@ -423,7 +423,9 @@
     <Compile Include="Interfaces\IAuthService.cs" />
     <Compile Include="Interfaces\IDocumentService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Metadatas\DocumentMetadata.cs" />
     <Compile Include="Metadatas\UserMetadata.cs" />
+    <Compile Include="Models\Document.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LoginResponse.cs" />
     <Compile Include="Models\User.cs" />

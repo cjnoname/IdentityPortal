@@ -1,7 +1,7 @@
 import axios from "axios";
+import { getAuthToken } from "./utils/auth";
 
 export const login = function (username, password) {
-    console.log("login api called ", username, password);
     return axios.post("http://localhost:64338/Umbraco/Api/Auth/Login",{
         Username: username,
         Password: password
@@ -30,5 +30,19 @@ export const upload = function (files) {
     //     }
     // };
 
-    return  axios.post('http://localhost:64338/Umbraco/Api/Document/Upload', formData);
+    return axios.post('http://localhost:64338/Umbraco/Api/Document/Upload', formData, {
+        headers: { AuthToken: getAuthToken() }
+    });
+}
+
+export const loadFiles = function () {
+    return axios.get('http://localhost:64338/Umbraco/Api/Document/Documents', {
+        headers: { AuthToken: getAuthToken() }
+    });
+}
+
+export const removeFile = function (id) {
+    return axios.delete(`http://localhost:64338/Umbraco/Api/Document/Documents/${id}`, {
+        headers: { AuthToken: getAuthToken() }
+    });
 }

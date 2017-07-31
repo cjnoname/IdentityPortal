@@ -4,7 +4,6 @@ import { renderField, required, email } from "../../utils/validation";
 
 class Login extends Component {
     render() {
-        // console.log(this.props)
         const { handleSubmit, pristine, submitting, valid } = this.props;
         return (
             <form onSubmit={ handleSubmit }>

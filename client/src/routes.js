@@ -19,8 +19,8 @@ function requireAuth (nextState, replace) {
 function requireNotAuth (nextState, replace) {
   if (hasAuthToken()) {
       replace({
-      pathname: '/Welcome'
-    })
+        pathname: '/Welcome'
+      })
   }
 }
 

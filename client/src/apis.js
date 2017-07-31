@@ -46,3 +46,8 @@ export const removeFile = function (id) {
         headers: { AuthToken: getAuthToken() }
     });
 }
+
+export const register = function (userObject) {
+   console.log(123, userObject);
+    return axios.post("http://localhost:64338/Umbraco/Api/Auth/RegisterMember", { ...userObject });
+}

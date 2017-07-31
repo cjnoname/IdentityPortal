@@ -1,5 +1,5 @@
 import { fork } from "redux-saga/effects";
-import { watchAuth, watchDeAuth, autoAuth } from "./authWatcher";
+import { watchAuth, watchDeAuth, autoAuth, watchRegister } from "./authWatcher";
 import { watchFileUpload, watchLoadFiles, watchRemoveFiles } from "./fileWatcher";
 
 export default function* rootSaga() {
@@ -9,6 +9,7 @@ export default function* rootSaga() {
         autoAuth(),
         watchFileUpload(),
         watchLoadFiles(),
-        watchRemoveFiles()
+        watchRemoveFiles(),
+        watchRegister()
     ]
 }

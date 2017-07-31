@@ -1,5 +1,5 @@
 import { put, call } from 'redux-saga/effects';
-import { login, logout, autoLogin } from "../apis";
+import { login, logout, autoLogin, register } from "../apis";
 import { saveAuthToken, removeAuthToken, hasAuthToken, getAuthToken } from "../utils/auth";
 import { push } from 'react-router-redux';
 import * as types from '../constants/actionTypes';
@@ -46,5 +46,18 @@ export function* autoAuthorize (autoLoginAction) {
         }
     } catch (e) {
         yield put({ type: types.LOGIN_REQUEST_FAILED, payload: { message: "unexpected error occured" }});
+    }
+}
+
+export function* registerUser (registerAction) {
+    try {
+        const response = yield call(register, registerAction.payload.userObject);
+        const username = response.data.CurrenUserName;
+        const token = response.data.AuthToken;
+        yield put({type: types.LOGIN_REQUEST_SUCCESS, payload: { username, token }});
+        saveAuthToken(token);
+        yield put(push('/Welcome'));
+    } catch (error) {
+        yield put({ type: types.REGISTER_FAILED, payload: { message: "unexpected error occured" } });
     }
 }
